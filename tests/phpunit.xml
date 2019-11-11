@@ -6,6 +6,8 @@
             <exclude>
                 <file>../src/System/Random.php</file>
                 <file>../src/System/DefaultRandom.php</file>
+                <file>../src/System/Clock.php</file>
+                <file>../src/System/DefaultClock.php</file>
             </exclude>
         </whitelist>
     </filter>
