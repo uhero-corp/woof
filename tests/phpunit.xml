@@ -4,6 +4,8 @@
         <whitelist>
             <directory>../src</directory>
             <exclude>
+                <file>../src/System/Random.php</file>
+                <file>../src/System/DefaultRandom.php</file>
             </exclude>
         </whitelist>
     </filter>
