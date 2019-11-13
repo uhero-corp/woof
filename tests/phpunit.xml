@@ -9,7 +9,6 @@
                 <file>../src/System/Clock.php</file>
                 <file>../src/System/DefaultClock.php</file>
                 <file>../src/System/FileSystemException.php</file>
-                <file>../src/Log/Logger.php</file>
                 <file>../src/Log/LogFormat.php</file>
                 <file>../src/Log/LogStorage.php</file>
             </exclude>
