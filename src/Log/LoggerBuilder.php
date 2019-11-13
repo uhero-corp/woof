@@ -174,4 +174,14 @@ class LoggerBuilder
     {
         return $this->clock ?? DefaultClock::getInstance();
     }
+
+    /**
+     * このオブジェクトの設定内容に基づいて Logger オブジェクトを生成します。
+     *
+     * @return Logger
+     */
+    public function build(): Logger
+    {
+        return Logger::newInstance($this);
+    }
 }

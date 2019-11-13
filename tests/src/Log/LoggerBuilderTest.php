@@ -86,4 +86,14 @@ class LoggerBuilderTest extends TestCase
         $this->assertSame($obj, $obj->setClock($clock));
         $this->assertSame($clock, $obj->getClock());
     }
+
+    /**
+     * @covers ::build
+     */
+    public function testBuild()
+    {
+        $storage = new FileLogStorage(TEST_DATA_DIR);
+        $obj     = (new LoggerBuilder())->setStorage($storage);
+        $this->assertInstanceOf(Logger::class, $obj->build());
+    }
 }
