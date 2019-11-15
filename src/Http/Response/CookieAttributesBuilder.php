@@ -158,4 +158,12 @@ class CookieAttributesBuilder
     {
         return $this->sameSite ?? "";
     }
+
+    /**
+     * @return CookieAttributes
+     */
+    public function build(): CookieAttributes
+    {
+        return CookieAttributes::newInstance($this);
+    }
 }
