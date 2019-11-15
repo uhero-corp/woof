@@ -99,4 +99,13 @@ class CookieAttributesBuilderTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         (new CookieAttributesBuilder())->setSameSite("Invalid");
     }
+
+    /**
+     * @return ::build
+     */
+    public function testBuild(): void
+    {
+        $obj = new CookieAttributesBuilder();
+        $this->assertInstanceOf(CookieAttributes::class, $obj->build());
+    }
 }
