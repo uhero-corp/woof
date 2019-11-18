@@ -242,4 +242,26 @@ class RequestBuilderTest extends TestCase
         $obj->setHost("example.com");
         $this->assertInstanceOf(Request::class, $obj->build());
     }
+
+    /**
+     * @covers ::__construct
+     * @covers ::importRequest
+     */
+    public function testConstructByRequest(): void
+    {
+        $obj1 = (new RequestBuilder())
+            ->setHost("www.example.com")
+            ->setUri("/foo/bar?a=1&b=2")
+            ->setPath("/foo/bar")
+            ->setMethod("post")
+            ->setScheme("https")
+            ->setQueryList(["a" => "1", "b" => "2"])
+            ->setPostList(["content" => "This is test"])
+            ->setCookieList(["session_id" => "aaaa1234"])
+            ->setHeader(new HttpDate("If-Modified-Since", 1555555555))
+            ->setUploadFile("img", new UploadFile("sample.png", "/tmp/sample.png", 0, 2468));
+        $req  = $obj1->build();
+        $obj2 = new RequestBuilder($req);
+        $this->assertEquals($obj2, $obj1);
+    }
 }
