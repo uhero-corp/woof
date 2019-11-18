@@ -56,13 +56,38 @@ class RequestBuilder
      */
     private $fileList;
 
-    public function __construct()
+    /**
+     * @param Request $request
+     */
+    public function __construct(Request $request = null)
     {
         $this->headerList = [];
         $this->queryList  = [];
         $this->postList   = [];
         $this->cookieList = [];
         $this->fileList   = [];
+        if ($request !== null) {
+            $this->importRequest($request);
+        }
+    }
+
+    /**
+     * @param Request $request
+     */
+    private function importRequest(Request $request): void
+    {
+        $this->host       = $request->getHost();
+        $this->uri        = $request->getUri();
+        $this->path       = $request->getPath();
+        $this->scheme     = $request->getScheme();
+        $this->method     = $request->getMethod();
+        $this->queryList  = $request->getQueryList();
+        $this->postList   = $request->getPostList();
+        $this->cookieList = $request->getCookieList();
+        $this->fileList   = $request->getUploadFileList();
+        foreach ($request->getHeaderList() as $header) {
+            $this->setHeader($header);
+        }
     }
 
     /**
