@@ -2,6 +2,8 @@
 
 namespace Woof\Http;
 
+use LogicException;
+
 class RequestBuilder
 {
     /**
@@ -283,5 +285,19 @@ class RequestBuilder
     public function getUploadFileList(): array
     {
         return $this->fileList;
+    }
+
+    /**
+     * このオブジェクトの設定内容に基づいて Request インスタンスを生成します。
+     * method が設定されていない場合は "get" として扱われます。
+     * scheme が設定されていない場合は "http" として扱われます。
+     * host については明示的に指定する必要があります。設定されていない場合は LogicException をスローします。
+     *
+     * @return Request
+     * @throws LogicException host が設定されていない場合
+     */
+    public function build(): Request
+    {
+        return Request::newInstance($this);
     }
 }

@@ -231,4 +231,15 @@ class RequestBuilderTest extends TestCase
         $this->assertSame($obj, $obj->setUploadFile("foo", $f1)->setUploadFile("bar", $f2));
         $this->assertSame($expected, $obj->getUploadFileList());
     }
+
+    /**
+     * @covers ::__construct
+     * @covers ::build
+     */
+    public function testBuild(): void
+    {
+        $obj = new RequestBuilder();
+        $obj->setHost("example.com");
+        $this->assertInstanceOf(Request::class, $obj->build());
+    }
 }
