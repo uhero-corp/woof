@@ -5,97 +5,92 @@ namespace Woof\System;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @coversDefaultClass Woof\System\VariablesBuilder
+ * @coversDefaultClass Woof\System\Variables
  */
-class VariablesBuilderTest extends TestCase
+class VariablesTest extends TestCase
 {
     /**
      * @covers ::__construct
-     * @covers ::setServer
+     * @covers ::newInstance
      * @covers ::getServer
      */
-    public function testGetServerAndSetServer(): void
+    public function testGetServer(): void
     {
         $arr = [
             "HTTP_HOST"   => "localhost",
             "SERVER_NAME" => "localhost",
             "REMOTE_ADDR" => "127.0.0.1",
         ];
-        $obj = new VariablesBuilder();
-        $this->assertInstanceOf(VariablesBuilder::class, $obj->setServer($arr));
+        $obj = (new VariablesBuilder())->setServer($arr)->build();
         $this->assertSame($arr, $obj->getServer());
     }
 
     /**
      * @covers ::__construct
-     * @covers ::setEnv
+     * @covers ::newInstance
      * @covers ::getEnv
      */
-    public function testGetEnvAndSetEnv(): void
+    public function testGetEnv(): void
     {
         $arr = [
             "env"  => "prod",
             "test" => "1",
         ];
-        $obj = new VariablesBuilder();
-        $this->assertInstanceOf(VariablesBuilder::class, $obj->setEnv($arr));
+        $obj = (new VariablesBuilder())->setEnv($arr)->build();
         $this->assertSame($arr, $obj->getEnv());
     }
 
     /**
      * @covers ::__construct
-     * @covers ::setGet
+     * @covers ::newInstance
      * @covers ::getGet
      */
-    public function testGetGetAndSetGet(): void
+    public function testGetGet(): void
     {
         $arr = [
             "process" => "confirm",
             "token"   => "abcd1234",
         ];
-        $obj = new VariablesBuilder();
-        $this->assertInstanceOf(VariablesBuilder::class, $obj->setGet($arr));
+        $obj = (new VariablesBuilder())->setGet($arr)->build();
         $this->assertSame($arr, $obj->getGet());
     }
 
     /**
      * @covers ::__construct
-     * @covers ::setPost
+     * @covers ::newInstance
      * @covers ::getPost
      */
-    public function testGetPostAndSetPost(): void
+    public function testGetPost(): void
     {
         $arr = [
             "login"    => "sample",
             "password" => "thisistest",
         ];
-        $obj = new VariablesBuilder();
-        $this->assertInstanceOf(VariablesBuilder::class, $obj->setPost($arr));
+        $obj = (new VariablesBuilder())->setPost($arr)->build();
         $this->assertSame($arr, $obj->getPost());
     }
 
     /**
      * @covers ::__construct
-     * @covers ::setCookie
+     * @covers ::newInstance
      * @covers ::getCookie
      */
-    public function testGetCookieAndSetCookie(): void
+    public function testGetCookie(): void
     {
         $arr = [
             "session_id" => "abcd1234",
             "ad_token"   => "9876asdf",
         ];
-        $obj = new VariablesBuilder();
-        $this->assertInstanceOf(VariablesBuilder::class, $obj->setCookie($arr));
+        $obj = (new VariablesBuilder())->setCookie($arr)->build();
         $this->assertSame($arr, $obj->getCookie());
     }
 
     /**
      * @covers ::__construct
-     * @covers ::setFiles
+     * @covers ::newInstance
      * @covers ::getFiles
      */
-    public function testGetFilesAndSetFiles(): void
+    public function testGetFiles(): void
     {
         $arr = [
             "etc1" => [
@@ -113,18 +108,7 @@ class VariablesBuilderTest extends TestCase
                 "size"     => 5678,
             ],
         ];
-        $obj = new VariablesBuilder();
-        $this->assertInstanceOf(VariablesBuilder::class, $obj->setFiles($arr));
+        $obj = (new VariablesBuilder())->setFiles($arr)->build();
         $this->assertSame($arr, $obj->getFiles());
-    }
-
-    /**
-     * @covers ::__construct
-     * @covers ::build
-     */
-    public function testBuild(): void
-    {
-        $obj = new VariablesBuilder();
-        $this->assertInstanceOf(Variables::class, $obj->build());
     }
 }

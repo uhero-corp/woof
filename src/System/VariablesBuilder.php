@@ -163,4 +163,12 @@ class VariablesBuilder
     {
         return $this->files;
     }
+
+    /**
+     * @return Variables
+     */
+    public function build(): Variables
+    {
+        return Variables::newInstance($this);
+    }
 }
