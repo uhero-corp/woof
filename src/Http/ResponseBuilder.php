@@ -29,10 +29,37 @@ class ResponseBuilder
      */
     private $cookieList;
 
-    public function __construct()
+    /**
+     * @param Response $response
+     */
+    public function __construct(Response $response = null)
     {
         $this->headerList = [];
         $this->cookieList = [];
+        if ($response !== null) {
+            $this->importResponse($response);
+        }
+    }
+
+    /**
+     * @param Response $response
+     */
+    private function importResponse(Response $response): void
+    {
+        $body = $response->getBody();
+        if ($body !== EmptyBody::getInstance()) {
+            $this->body = $body;
+        }
+
+        $ignoreList = ["Content-Type", "Content-Length"];
+        foreach ($response->getHeaderList() as $header) {
+            if (!in_array($header->getName(), $ignoreList)) {
+                $this->setHeader($header);
+            }
+        }
+
+        $this->status     = $response->getStatus();
+        $this->cookieList = $response->getCookieList();
     }
 
     /**

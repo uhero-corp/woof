@@ -96,4 +96,19 @@ class ResponseBuilderTest extends TestCase
         $obj = new ResponseBuilder();
         $this->assertInstanceOf(Response::class, $obj->build());
     }
+
+    /**
+     * @covers ::__construct
+     * @covers ::importResponse
+     */
+    public function testConstructByResponse(): void
+    {
+        $obj = (new ResponseBuilder())
+            ->setBody(new TextBody("This is test", "text/plain"))
+            ->setStatus(Status::get400())
+            ->setCookie("session_id", "abcdabcd12341234")
+            ->setHeader(new TextField("X-Test-Header", "TEST"));
+        $res = $obj->build();
+        $this->assertEquals($obj, new ResponseBuilder($res));
+    }
 }
