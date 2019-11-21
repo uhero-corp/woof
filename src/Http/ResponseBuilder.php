@@ -122,4 +122,12 @@ class ResponseBuilder
     {
         return $this->cookieList;
     }
+
+    /**
+     * @return Response
+     */
+    public function build(): Response
+    {
+        return Response::newInstance($this);
+    }
 }

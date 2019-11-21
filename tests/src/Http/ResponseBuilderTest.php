@@ -86,4 +86,14 @@ class ResponseBuilderTest extends TestCase
         $this->assertSame($obj, $obj->setCookie("var1", "hoge")->setCookie("var2", "fuga"));
         $this->assertEquals($expected, $obj->getCookieList());
     }
+
+    /**
+     * @covers ::__construct
+     * @covers ::build
+     */
+    public function testBuild(): void
+    {
+        $obj = new ResponseBuilder();
+        $this->assertInstanceOf(Response::class, $obj->build());
+    }
 }
