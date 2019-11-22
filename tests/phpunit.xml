@@ -15,6 +15,7 @@
                 <file>../src/Http/UploadFileNotFoundException.php</file>
                 <file>../src/Http/Response/Body.php</file>
                 <file>../src/Util/DataObject.php</file>
+                <file>../src/Web/Session/ParseException.php</file>
             </exclude>
         </whitelist>
     </filter>
