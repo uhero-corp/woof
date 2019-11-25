@@ -6,6 +6,7 @@
             <exclude>
                 <file>../src/Resources.php</file>
                 <file>../src/ResourceNotFoundException.php</file>
+                <file>../src/DataStorage.php</file>
                 <file>../src/System/Random.php</file>
                 <file>../src/System/DefaultRandom.php</file>
                 <file>../src/System/Clock.php</file>
