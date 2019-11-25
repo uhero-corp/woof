@@ -171,4 +171,12 @@ class SessionStorageBuilder
     {
         return $this->random ?? DefaultRandom::getInstance();
     }
+
+    /**
+     * @return SessionStorage
+     */
+    public function build(): SessionStorage
+    {
+        return SessionStorage::newInstance($this);
+    }
 }

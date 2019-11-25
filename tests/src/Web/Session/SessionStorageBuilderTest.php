@@ -145,4 +145,16 @@ class SessionStorageBuilderTest extends TestCase
         $this->assertSame($obj, $obj->setRandom($random));
         $this->assertSame($random, $obj->getRandom());
     }
+
+    /**
+     * @covers ::build
+     */
+    public function testBuild(): void
+    {
+        $ss = (new SessionStorageBuilder())
+            ->setKey("sess_id")
+            ->setSessionContainer(new FileSessionContainer(TEST_DATA_DIR))
+            ->build();
+        $this->assertInstanceOf(SessionStorage::class, $ss);
+    }
 }
