@@ -1,0 +1,10 @@
+{
+    "key1": {
+        "aaa": "hoge",
+        "bbb": "fuga"
+    },
+    "key2": {
+        "ccc": "piyo",
+        "ddd": "hoge"
+    }
+}
