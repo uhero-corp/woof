@@ -19,6 +19,7 @@
                 <file>../src/Http/Response/Body.php</file>
                 <file>../src/Util/DataObject.php</file>
                 <file>../src/Util/StringDecoder.php</file>
+                <file>../src/Util/Properties.php</file>
                 <file>../src/Web/Session/ParseException.php</file>
                 <file>../src/Web/Session/SessionContainer.php</file>
             </exclude>
