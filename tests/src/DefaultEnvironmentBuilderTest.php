@@ -177,4 +177,17 @@ class DefaultEnvironmentBuilderTest extends TestCase
         $this->assertTrue($obj->hasVariables());
         $this->assertSame($var, $obj->getVariables());
     }
+
+    /**
+     * @covers ::build
+     */
+    public function testBuild(): void
+    {
+        $tmpdir = self::TMP_DIR;
+        $obj    = (new DefaultEnvironmentBuilder())
+            ->setConfigDir($tmpdir)
+            ->setResourcesDir($tmpdir)
+            ->build();
+        $this->assertInstanceOf(DefaultEnvironment::class, $obj);
+    }
 }
