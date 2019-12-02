@@ -1,0 +1,6 @@
+{
+    "dirname": "sess01",
+    "keyname": "testkey",
+    "max-age": 900,
+    "gc-probability": 0.125
+}

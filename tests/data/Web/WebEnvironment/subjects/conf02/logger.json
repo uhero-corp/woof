@@ -1,0 +1,5 @@
+{
+    "dirname": "logdir",
+    "prefix": "test",
+    "loglevel": "info"
+}

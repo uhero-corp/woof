@@ -69,4 +69,12 @@ class WebEnvironmentBuilder extends EnvironmentBuilder
     {
         return $this->headerParser;
     }
+
+    /**
+     * @return WebEnvironment
+     */
+    public function build(): WebEnvironment
+    {
+        return WebEnvironment::newInstance($this);
+    }
 }
