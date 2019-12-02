@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Woof\Http\HeaderParser;
 use Woof\Http\HttpDateFormat;
 use Woof\System\FixedClock;
+use Woof\System\VariablesBuilder;
 use Woof\Web\Session\FileSessionContainer;
 use Woof\Web\Session\SessionStorageBuilder;
 
@@ -50,5 +51,27 @@ class WebEnvironmentBuilderTest extends TestCase
         $this->assertSame($obj, $obj->setHeaderParser($hp));
         $this->assertTrue($obj->hasHeaderParser());
         $this->assertSame($hp, $obj->getHeaderParser());
+    }
+
+    /**
+     * @covers ::build
+     */
+    public function testBuild(): void
+    {
+        $server = [
+            "HTTP_HOST"   => "www.example.com",
+            "REMOTE_ADDR" => "127.0.0.1",
+            "REQUEST_URI" => "/",
+        ];
+        $var = (new VariablesBuilder())
+            ->setServer($server)
+            ->build();
+        $tmpdir = self::TMP_DIR;
+        $obj    = (new WebEnvironmentBuilder())
+            ->setConfigDir($tmpdir)
+            ->setResourcesDir($tmpdir)
+            ->setVariables($var)
+            ->build();
+        $this->assertInstanceOf(WebEnvironment::class, $obj);
     }
 }

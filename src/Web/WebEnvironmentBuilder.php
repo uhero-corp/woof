@@ -45,6 +45,7 @@ class WebEnvironmentBuilder extends EnvironmentBuilder
     }
 
     /**
+<<<<<<< HEAD
      * @param HeaderParser $parser
      * @return WebEnvironmentBuilder このオブジェクト
      */
@@ -68,5 +69,13 @@ class WebEnvironmentBuilder extends EnvironmentBuilder
     public function getHeaderParser(): HeaderParser
     {
         return $this->headerParser;
+    }
+
+    /**
+     * @return WebEnvironment
+     */
+    public function build(): WebEnvironment
+    {
+        return WebEnvironment::newInstance($this);
     }
 }
