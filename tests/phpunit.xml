@@ -22,6 +22,8 @@
                 <file>../src/Util/Properties.php</file>
                 <file>../src/Web/Controller.php</file>
                 <file>../src/Web/View.php</file>
+                <file>../src/Web/Output.php</file>
+                <file>../src/Web/DefaultOutput.php</file>
                 <file>../src/Web/Session/ParseException.php</file>
                 <file>../src/Web/Session/SessionContainer.php</file>
             </exclude>
