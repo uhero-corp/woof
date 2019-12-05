@@ -1,0 +1,15 @@
+{
+    "key1": 123,
+    "key2": {
+        "aaa": "hoge",
+        "bbb": "fuga"
+    },
+    "key3": {
+        "ccc": {
+            "x": true,
+            "y": false,
+            "z": null
+        },
+        "ddd": [3, 4, 5]
+    }
+}
